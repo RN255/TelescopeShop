@@ -25,6 +25,18 @@ namespace TelescopeShop.Controllers
             return View(await _context.Product.ToListAsync());
         }
 
+        // GET: Products/ShowSearchForm
+        public async Task<IActionResult> ShowSearchForm()
+        {
+            return View();
+        }
+
+        // POST: SampleInfoes/ShowSearchResults
+        public async Task<IActionResult> ShowSearchResults(string SearchPhrase)
+        {
+            return View("Index", await _context.Product.Where(j => j.Name.Contains(SearchPhrase)).ToListAsync());
+        }
+
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
