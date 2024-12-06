@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using TelescopeShop.Models;
 
 namespace TelescopeShop.Data
 {
@@ -9,5 +10,6 @@ namespace TelescopeShop.Data
             : base(options)
         {
         }
+        public DbSet<TelescopeShop.Models.Product> Product { get; set; } = default!;
     }
 }
