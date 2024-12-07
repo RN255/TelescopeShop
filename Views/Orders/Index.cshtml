@@ -1,0 +1,31 @@
+﻿@model IEnumerable<TelescopeShop.Models.Order>
+
+<h1>Your Orders</h1>
+
+@foreach (var order in Model)
+{
+    <div>
+        <h3>Order #@order.OrderId</h3>
+        <p>Order Date: @order.OrderDate</p>
+        <p>Total Amount: @order.TotalAmount.ToString("C")</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in order.OrderItems)
+                {
+                    <tr>
+                        <td>@item.Product.Name</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.Price.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

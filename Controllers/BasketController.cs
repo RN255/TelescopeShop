@@ -85,5 +85,51 @@ namespace TelescopeShop.Controllers
 
             return View(basket);
         }
+
+        public async Task<IActionResult> Checkout()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            // Fetch the user's basket
+            var basket = await _context.Baskets.Include(b => b.BasketItems)
+                                               .ThenInclude(bi => bi.Product)
+                                               .FirstOrDefaultAsync(b => b.UserId == userId);
+
+            if (basket == null || !basket.BasketItems.Any())
+            {
+                // Redirect to basket if it's empty
+                return RedirectToAction("Index", "Basket");
+            }
+
+            // Create a new order
+            var order = new Order
+            {
+                UserId = userId,
+                OrderDate = DateTime.Now,
+                TotalAmount = basket.BasketItems.Sum(bi => bi.Quantity * bi.Price),
+                OrderItems = basket.BasketItems.Select(bi => new OrderItem
+                {
+                    ProductId = bi.ProductId,
+                    Quantity = bi.Quantity,
+                    Price = bi.Price
+                }).ToList()
+            };
+
+            _context.Orders.Add(order);
+
+            // Remove the user's basket
+            _context.Baskets.Remove(basket);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("OrderSuccess");
+        }
+
+        public IActionResult OrderSuccess()
+        {
+            return View();
+        }
+
+
     }
 }
