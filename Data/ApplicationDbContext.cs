@@ -11,5 +11,9 @@ namespace TelescopeShop.Data
         {
         }
         public DbSet<TelescopeShop.Models.Product> Product { get; set; } = default!;
+        public DbSet<Basket> Baskets { get; set; }
+        public DbSet<BasketItem> BasketItems { get; set; }
+
+
     }
 }

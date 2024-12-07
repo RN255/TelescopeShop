@@ -32,7 +32,7 @@ namespace TelescopeShop.Controllers
             return View();
         }
 
-        // POST: SampleInfoes/ShowSearchResults
+        // POST: Products/ShowSearchResults
         public async Task<IActionResult> ShowSearchResults(string SearchPhrase)
         {
             return View("Index", await _context.Product.Where(j => j.Name.Contains(SearchPhrase)).ToListAsync());
