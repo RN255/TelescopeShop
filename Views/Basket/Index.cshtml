@@ -1,6 +1,9 @@
 ﻿@model Basket
 
+<h2>Congrats, this has been added to your basket</h2>
+<p>the details of the item you just added to your basket will go here.</p>
 <h2>Your Basket</h2>
+<p>We need to be able to increase, decrease and remove things from the basket.</p>
 <table class="table">
     <thead>
         <tr>
@@ -26,3 +29,5 @@
 <form asp-action="Checkout" asp-controller="Basket" method="post">
     <button type="submit" class="btn btn-primary">Checkout</button>
 </form>
+<a class="nav-link" asp-controller="Products" asp-action="Index">Return to products list</a>
+
