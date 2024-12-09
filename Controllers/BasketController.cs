@@ -43,7 +43,7 @@ namespace TelescopeShop.Controllers
             if (basketItem != null)
             {
                 // Update quantity if the item already exists in the basket
-                basketItem.Quantity += quantity;
+                basketItem.Quantity += 1;
             }
             else
             {
@@ -58,7 +58,7 @@ namespace TelescopeShop.Controllers
                 basket.BasketItems.Add(new BasketItem
                 {
                     ProductId = productId,
-                    Quantity = quantity,
+                    Quantity = 1,
                     Price = product.Price // Fetch product price from the database
                 });
             }
