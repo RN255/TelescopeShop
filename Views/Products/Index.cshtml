@@ -29,6 +29,10 @@
                             <input type="hidden" name="productId" value="@item.Id" />
                             <button type="submit" class="btn btn-primary">Add to Basket</button>
                         </form>
+                        <a asp-action="ProductDetails" asp-controller="Products" asp-route-id="@item.Id" class="btn btn-primary">
+                            View Details
+                        </a>
+
                     </div>
                 </div>
             </div>

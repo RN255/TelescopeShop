@@ -173,5 +173,20 @@ namespace TelescopeShop.Controllers
         {
             return _context.Product.Any(e => e.Id == id);
         }
+
+        public async Task<IActionResult> ProductDetails(int id)
+        {
+            // Fetch the product by its ID
+            var product = await _context.Product
+                                        .FirstOrDefaultAsync(p => p.Id == id);
+
+            if (product == null)
+            {
+                return NotFound(); // Handle cases where the product doesn't exist
+            }
+
+            // Return the view with the product data
+            return View(product);
+        }
     }
 }
