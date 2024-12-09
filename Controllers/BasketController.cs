@@ -70,6 +70,96 @@ namespace TelescopeShop.Controllers
             return RedirectToAction("Index", "Basket");
         }
 
+        [HttpPost]
+        public async Task<IActionResult> RemoveFromBasket(int basketItemId)
+        {
+            // Get the user ID from the current user claims
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null)
+            {
+                // Handle unauthenticated users (e.g., redirect to login)
+                return RedirectToAction("Login", "Account");
+            }
+
+            // Fetch the basket and include its items
+            var basket = await _context.Baskets.Include(b => b.BasketItems)
+                                               .FirstOrDefaultAsync(b => b.UserId == userId);
+
+            if (basket == null)
+            {
+                // If the basket doesn't exist, return to the basket page
+                return RedirectToAction("Index", "Basket");
+            }
+
+            // Find the basket item to remove
+            var basketItem = basket.BasketItems.FirstOrDefault(bi => bi.BasketItemId == basketItemId);
+            if (basketItem == null)
+            {
+                // If the item doesn't exist in the basket, return a NotFound result
+                return NotFound();
+            }
+
+            // Remove the item from the basket
+            if (basketItem.Quantity >= 2)
+            {
+                // Update quantity if the item already exists in the basket
+                basketItem.Quantity -= 1;
+            }
+            else
+            {
+
+                basket.BasketItems.Remove(basketItem);
+
+            }
+
+                // Save changes to the database
+                await _context.SaveChangesAsync();
+
+            // Redirect to the basket index page
+            return RedirectToAction("Index", "Basket");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> IncreaseBasketCount(int basketItemId)
+        {
+            // Get the user ID from the current user claims
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null)
+            {
+                // Handle unauthenticated users (e.g., redirect to login)
+                return RedirectToAction("Login", "Account");
+            }
+
+            // Fetch the basket and include its items
+            var basket = await _context.Baskets.Include(b => b.BasketItems)
+                                               .FirstOrDefaultAsync(b => b.UserId == userId);
+
+            if (basket == null)
+            {
+                // If the basket doesn't exist, return to the basket page
+                return RedirectToAction("Index", "Basket");
+            }
+
+            // Find the basket item to remove
+            var basketItem = basket.BasketItems.FirstOrDefault(bi => bi.BasketItemId == basketItemId);
+            if (basketItem == null)
+            {
+                // If the item doesn't exist in the basket, return a NotFound result
+                return NotFound();
+            }
+
+            // Remove the item from the basket
+            basketItem.Quantity += 1;
+
+            // Save changes to the database
+            await _context.SaveChangesAsync();
+
+            // Redirect to the basket index page
+            return RedirectToAction("Index", "Basket");
+        }
+
+
+
         // Optional: Add an Index method to display the basket
         public async Task<IActionResult> Index()
         {

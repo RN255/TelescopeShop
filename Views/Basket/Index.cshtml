@@ -21,6 +21,18 @@
                 <td>@item.Quantity</td>
                 <td>@item.Price.ToString("C")</td>
                 <td>@(item.Quantity * item.Price)</td>
+                <td>
+                    <form asp-action="RemoveFromBasket" asp-controller="Basket" method="post">
+                        <input type="hidden" name="BasketItemId" value="@item.BasketItemId" />
+                        <button type="submit" class="btn btn-primary">-</button>
+                    </form>
+                </td>
+                <td>
+                    <form asp-action="IncreaseBasketCount" asp-controller="Basket" method="post">
+                        <input type="hidden" name="BasketItemId" value="@item.BasketItemId" />
+                        <button type="submit" class="btn btn-primary">+</button>
+                    </form>
+                </td>
             </tr>
         }
     </tbody>
