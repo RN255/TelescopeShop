@@ -68,3 +68,18 @@ body {
 body {
     padding-top: 60px; /* Adjust this value to match your navbar's height */
 }
+
+
+/*background colors */
+
+.greyButtonColour {
+    background-color: rgb(183,183,183);
+}
+
+.blackButtonColour {
+    background-color: rgb(53,55,53);
+}
+
+.greenButtonColour {
+    background-color: rgb(42, 135, 115);
+}
