@@ -48,6 +48,15 @@ body {
     border: none;
 }
 
+/*Home page mid page banner */
+
+.intoTheCosmosBackground {
+    background-image: url('/images/intoTheCosmos.jpeg');
+    min-height: 25vh;
+    background-size: cover; /* Scale the image to cover the entire element */
+    background-position: center; /* Center the image */
+}
+
 /*nav bar*/
 
 .navbar .shopping-basket-icon {
@@ -56,3 +65,6 @@ body {
     background-color: white;
 }
 
+body {
+    padding-top: 60px; /* Adjust this value to match your navbar's height */
+}
