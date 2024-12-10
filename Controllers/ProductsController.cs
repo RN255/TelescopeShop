@@ -131,7 +131,7 @@ namespace TelescopeShop.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("AdminView", "Products");
             }
             return View(product);
         }
