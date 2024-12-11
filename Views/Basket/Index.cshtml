@@ -11,6 +11,8 @@
             <th>Quantity</th>
             <th>Price</th>
             <th>Total</th>
+            <th>Remove</th>
+            <th>Add</th>
         </tr>
     </thead>
     <tbody>
@@ -24,13 +26,13 @@
                 <td>
                     <form asp-action="RemoveFromBasket" asp-controller="Basket" method="post">
                         <input type="hidden" name="BasketItemId" value="@item.BasketItemId" />
-                        <button type="submit" class="btn btn-primary">-</button>
+                        <button type="submit" class="btn btn-danger">-</button>
                     </form>
                 </td>
                 <td>
                     <form asp-action="IncreaseBasketCount" asp-controller="Basket" method="post">
                         <input type="hidden" name="BasketItemId" value="@item.BasketItemId" />
-                        <button type="submit" class="btn btn-primary">+</button>
+                        <button type="submit" class="btn btn-success">+</button>
                     </form>
                 </td>
             </tr>
@@ -39,7 +41,7 @@
 </table>
 
 <form asp-action="Checkout" asp-controller="Basket" method="post">
-    <button type="submit" class="btn btn-primary">Checkout</button>
+    <button type="submit" class="btn btn-success">Checkout</button>
 </form>
-<a class="nav-link" asp-controller="Products" asp-action="Index">Return to products list</a>
+<a class="btn greyButtonColour text-light mt-3" asp-controller="Products" asp-action="Index">Return to products list</a>
 
