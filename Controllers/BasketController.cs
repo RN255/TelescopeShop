@@ -172,6 +172,12 @@ namespace TelescopeShop.Controllers
             var basket = await _context.Baskets.Include(b => b.BasketItems)
                                                .ThenInclude(bi => bi.Product)
                                                .FirstOrDefaultAsync(b => b.UserId == userId);
+            // Check if the basket is null or empty
+            if (basket == null || !basket.BasketItems.Any())
+            {
+                // Return an empty basket view or display a friendly message
+                return View("EmptyBasket");
+            }
 
             return View(basket);
         }
