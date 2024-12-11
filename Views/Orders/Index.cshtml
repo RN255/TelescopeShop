@@ -1,31 +1,55 @@
 ﻿@model IEnumerable<TelescopeShop.Models.Order>
 
-<h1>Your Orders</h1>
 
-@foreach (var order in Model)
-{
-    <div>
-        <h3>Order #@order.OrderId</h3>
-        <p>Order Date: @order.OrderDate</p>
-        <p>Total Amount: @order.TotalAmount.ToString("C")</p>
-        <table>
-            <thead>
-                <tr>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in order.OrderItems)
-                {
-                    <tr>
-                        <td>@item.Product.Name</td>
-                        <td>@item.Quantity</td>
-                        <td>@item.Price.</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col">
+            <h1>Your Orders</h1>
+        </div>
     </div>
-}
+    
+    <div class="row mt-3">
+        <div class="col">
+
+            @foreach (var order in Model)
+            {
+                <div class="card mb-4">
+                    <div class="card-header blackButtonColour text-white">
+                        <h3 class="fs-5 mb-0">Order #@order.OrderId</h3>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Order Date:</strong> @order.OrderDate</p>
+                        <p><strong>Total Amount:</strong> @order.TotalAmount.ToString("C")</p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped mt-3">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in order.OrderItems)
+                                    {
+                                        <tr>
+                                            <td>@item.Product.Name</td>
+                                            <td>@item.Quantity</td>
+                                            <td>@item.Price.ToString("C")</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+        
+    
+</div>
+
