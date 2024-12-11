@@ -9,7 +9,7 @@
 <partial name="_StatusMessage" for="StatusMessage" />
 <div class="row">
     <div class="col-md-6">
-        <form id="profile-form" method="post">
+        <form id="profile-form" class="border-bottom pb-2" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
             <div class="form-floating mb-3">
                 <input asp-for="Username" class="form-control" placeholder="Please choose your username." disabled />
@@ -22,12 +22,8 @@
             </div>
             <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
         </form>
-    </div>
-    <div>
-        <a class="nav-link" asp-controller="Orders" asp-action="Index">My Orders</a>
-    </div>
-    <div>
-        <a class="nav-link" asp-controller="Basket" asp-action="Index">View basket</a>
+        <a class="w-100 btn btn-lg blackButtonColour mt-2 text-light" asp-controller="Orders" asp-action="Index">My Orders</a>
+        <a class="w-100 btn btn-lg greyButtonColour mt-2 text-light" asp-controller="Basket" asp-action="Index">View basket</a>
     </div>
 </div>
 
