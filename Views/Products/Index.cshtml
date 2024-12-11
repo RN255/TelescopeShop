@@ -4,10 +4,6 @@
     ViewData["Title"] = "Index";
 }
 
-
-
-
-
 <div class="container">
     <div class="row mt-3">
         <div class="col">
@@ -26,15 +22,25 @@
                 </p>
             </div>
         </div>
-        
     }
+
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <form asp-action="ShowSearchResults">
+                <div class="form-group d-flex flex-row">
+                    <input name="SearchPhrase" class="form-control me-1" id="searchInput" required/>
+                    <input type="submit" value="Search" class="btn blackButtonColour text-light" />
+                </div>
+            </form>
+        </div>
+    </div>
 
     <div class="row mt-5">
         @foreach (var item in Model)
         {
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                 <div class="card h-100">
-                    <img src="@item.ImageUrl" class="card-img-top" alt="...">
+                    <img src="@item.ImageUrl" class="card-img-top" alt="Product image">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">@item.Name</h5>
                         <p class="card-text">@item.Price</p>

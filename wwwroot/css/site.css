@@ -87,3 +87,18 @@ body {
 .greenButtonColourImportant {
     background-color: rgb(42, 135, 115) !important;
 }
+
+/*image max height */
+
+.maxHeight50vh {
+    max-height: 50vh;
+    width: auto;
+}
+
+/*search input outline */
+
+#searchInput:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: inherit;
+}
