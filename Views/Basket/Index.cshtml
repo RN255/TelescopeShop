@@ -40,6 +40,28 @@
                 </tbody>
             </table>
             <form asp-action="Checkout" asp-controller="Basket" method="post">
+
+                    <div>
+                        <label for="AddressLine1">Address Line 1</label>
+                        <input type="text" id="AddressLine1" name="AddressLine1" required />
+                    </div>
+                    <div>
+                        <label for="AddressLine2">Address Line 2</label>
+                        <input type="text" id="AddressLine2" name="AddressLine2" />
+                    </div>
+                    <div>
+                        <label for="City">City</label>
+                        <input type="text" id="City" name="City" required />
+                    </div>
+                    <div>
+                        <label for="PostalCode">Postal Code</label>
+                        <input type="text" id="PostalCode" name="PostalCode" required />
+                    </div>
+                    <div>
+                        <label for="Country">Country</label>
+                        <input type="text" id="Country" name="Country" required />
+                    </div>
+
                 <button type="submit" class="btn btn-success">Checkout</button>
             </form>
             <a class="btn greyButtonColour text-light mt-3" asp-controller="Products" asp-action="Index">Return to products list</a>

@@ -41,6 +41,38 @@
                                     }
                                 </tbody>
                             </table>
+                            <table class="table table-bordered table-striped mt-3">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th colspan ="2">Delivery Address</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in order.OrderItems)
+                                    {
+                                        <tr>
+                                            <th>Address Line 1</th>
+                                            <td>@order.AddressLine1</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Address Line 2</th>
+                                            <td>@order.AddressLine2</td>
+                                        </tr>
+                                        <tr>
+                                            <th>City</th>
+                                            <td>@order.City</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Country</th>
+                                            <td>@order.Country</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Postal Code</th>
+                                            <td>@order.PostalCode</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

@@ -182,7 +182,7 @@ namespace TelescopeShop.Controllers
             return View(basket);
         }
 
-        public async Task<IActionResult> Checkout()
+        public async Task<IActionResult> Checkout(Order model)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
@@ -208,7 +208,12 @@ namespace TelescopeShop.Controllers
                     ProductId = bi.ProductId,
                     Quantity = bi.Quantity,
                     Price = bi.Price
-                }).ToList()
+                }).ToList(),
+                AddressLine1 = model.AddressLine1,
+                AddressLine2 = model.AddressLine2,
+                City = model.City,
+                PostalCode = model.PostalCode,
+                Country = model.Country
             };
 
             _context.Orders.Add(order);
