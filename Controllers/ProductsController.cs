@@ -21,9 +21,21 @@ namespace TelescopeShop.Controllers
         }
 
         // GET: Products
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder)
         {
-            return View(await _context.Product.ToListAsync());
+            ViewData["ProductSortParm"] = String.IsNullOrEmpty(sortOrder) ? "price_desc" : "";
+            var products = from p in _context.Product
+                           select p;
+            switch (sortOrder)
+            {
+                case "price_desc":
+                    products = products.OrderByDescending(p => p.Price);
+                    break;
+                default:
+                    products = products.OrderBy(p => p.Price);
+                    break;
+            }
+            return View(await products.AsNoTracking().ToListAsync());
         }
 
         // GET: Products

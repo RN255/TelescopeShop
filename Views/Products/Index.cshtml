@@ -28,13 +28,32 @@
         <div class="col-md-6">
             <form asp-action="ShowSearchResults">
                 <div class="form-group d-flex flex-row">
-                    <input name="SearchPhrase" class="form-control me-1" id="searchInput" required/>
+                    <input name="SearchPhrase" class="form-control me-1" id="searchInput" required />
                     <input type="submit" value="Search" class="btn blackButtonColour text-light" />
                 </div>
             </form>
         </div>
     </div>
 
+    @if (ViewData["ProductSortParm"]?.ToString() == "price_desc")
+    {
+        <div class="row mt-2">
+            <div class="col-md-3">
+                <a asp-action="Index" asp-route-sortOrder="" class="btn btn-secondary text-light w-100 mt-2">Price: low - high</a>
+                <a asp-action="Index" asp-route-sortOrder="price_desc" class="btn btn-outline-secondary text-dark w-100 mt-2">Price: High - Low</a>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row mt-3">
+            <div class="col-md-3">
+                <a asp-action="Index" asp-route-sortOrder="" class="btn  btn-outline-secondary text-dark w-100 mt-2">Price: Low - High</a>
+                <a asp-action="Index" asp-route-sortOrder="price_desc" class="btn btn-secondary text-light w-100 mt-2">Price: High - Low</a>
+            </div>
+        </div>
+    }
+    
     <div class="row mt-5">
         @foreach (var item in Model)
         {
@@ -59,4 +78,3 @@
         }
     </div>
 </div>
-
