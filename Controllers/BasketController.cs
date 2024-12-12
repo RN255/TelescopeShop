@@ -24,7 +24,7 @@ namespace TelescopeShop.Controllers
             if (userId == null)
             {
                 // Handle unauthenticated users (e.g., redirect to login)
-                return RedirectToAction("Login", "Account");
+                return RedirectToPage("/Account/Login", new { area = "Identity" });
             }
 
             // Check if the user already has a basket
