@@ -40,8 +40,34 @@
                 </tbody>
             </table>
 
+            <form class="mt-5">
+                <legend>Please enter payment details:</legend>
+                <div class="alert alert-danger" role="alert">
+                    Payment system coming soon!
+                </div>
+                <div class="mb-3">
+                    <label for="cardName" class="form-label">Cardholder Name</label>
+                    <input type="text" id="cardName" class="form-control" placeholder="John Smith" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="cardNumber" class="form-label">Card Number</label>
+                    <input type="text" id="cardNumber" class="form-control" placeholder="1234 5678 9012" disabled>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="expiryDate" class="form-label">Expiry Date</label>
+                        <input type="text" id="expiryDate" class="form-control" placeholder="MM/YY" disabled>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="cvv" class="form-label">CVV</label>
+                        <input type="text" id="cvv" class="form-control" placeholder="123" disabled>
+                    </div>
+                </div>
+                @* <button type="submit" class="btn btn-primary w-100" disabled>Pay Now</button> *@
+            </form>
+
             <form asp-action="Checkout" asp-controller="Basket" method="post" class="mt-5">
-                <h3>Please enter delivery address:</h3>
+                <legend>Please enter delivery address:</legend>
                 <div class="mb-3 col-lg-6">
                     <label for="AddressLine1" class="form-label">Address Line 1</label>
                     <input type="text" class="form-control" id="AddressLine1" name="AddressLine1" required />
@@ -65,6 +91,7 @@
 
                 <button type="submit" class="btn btn-success mt-3">Checkout</button>
             </form>
+
             <a class="btn greyButtonColour text-light mt-3" asp-controller="Products" asp-action="Index">Return to products list</a>
         </div>
     </div>
