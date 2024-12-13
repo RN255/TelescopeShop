@@ -92,7 +92,7 @@ body {
 
 .maxHeight50vh {
     max-height: 50vh;
-    width: auto;
+    max-width: 100%;
 }
 
 /*search input outline */
@@ -102,3 +102,4 @@ body {
     box-shadow: none;
     border-color: inherit;
 }
+

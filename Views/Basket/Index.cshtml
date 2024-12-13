@@ -11,29 +11,30 @@
                         <th>Quantity</th>
                         <th>Price</th>
                         <th>Total</th>
-                        <th>Remove</th>
-                        <th>Add</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model.BasketItems)
                     {
                         <tr>
-                            <td>@item.Product.Name</td>
+                            <td>
+                                @item.Product.Name
+                            </td>
                             <td>@item.Quantity</td>
                             <td>@item.Price.ToString("C")</td>
                             <td>@(item.Quantity * item.Price)</td>
                             <td>
-                                <form asp-action="RemoveFromBasket" asp-controller="Basket" method="post">
-                                    <input type="hidden" name="BasketItemId" value="@item.BasketItemId" />
-                                    <button type="submit" class="btn btn-danger">-</button>
-                                </form>
-                            </td>
-                            <td>
-                                <form asp-action="IncreaseBasketCount" asp-controller="Basket" method="post">
-                                    <input type="hidden" name="BasketItemId" value="@item.BasketItemId" />
-                                    <button type="submit" class="btn btn-success">+</button>
-                                </form>
+                                <div class="pt-1">
+                                    <form asp-action="IncreaseBasketCount" asp-controller="Basket" method="post" class="d-inline-block">
+                                        <input type="hidden" name="BasketItemId" value="@item.BasketItemId" />
+                                        <button type="submit" class="btn btn-success me-1 mb-1">+</button>
+                                    </form>
+                                    <form asp-action="RemoveFromBasket" asp-controller="Basket" method="post" class="d-inline-block">
+                                        <input type="hidden" name="BasketItemId" value="@item.BasketItemId" />
+                                        <button type="submit" class="btn btn-danger me-1 w-100 mb-1">-</button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     }
